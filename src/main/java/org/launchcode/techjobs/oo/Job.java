@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import java.lang.reflect.Field;
 import java.util.Objects;
 
 public class Job {
@@ -91,5 +92,29 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+    @Override
+    public String toString() {
+        String returnString = "\n"+
+                "ID: "+id+"\n";
+//        Field[] fields = Job.class.getDeclaredFields();
+        String[] fields = {name, employer.getValue(),location.getValue(),positionType.getValue(), coreCompetency.getValue()};
+        String[] fieldNames = {"Name: ","Employer: ","Location: ","Position Type: ","Core Competency: "};
+        for (int i=0; i<fieldNames.length; i++) {
+            returnString+=fieldNames[i];
+            if (fields[i].equals("") || fields[i].equals(null)) {
+                returnString+="Data not available\n";
+            } else {
+                returnString+=fields[i]+"\n";
+            }
+        }
+//        returnString +="\n"+
+//                "ID: "+id+"\n"+
+//                "Name: "+name+"\n"+
+//                "Employer: "+employer.getValue()+"\n"+
+//                "Location: "+location.getValue()+"\n"+
+//                "Position Type: "+positionType.getValue()+"\n"+
+//                "Core Competency: "+coreCompetency.getValue()+"\n";
+        return returnString;
     }
 }
