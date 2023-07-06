@@ -108,7 +108,7 @@ public class Job {
                 returnString+=fields[i]+"\n";
             }
         }
-//        returnString +="\n"+
+//        String returnString ="\n"+
 //                "ID: "+id+"\n"+
 //                "Name: "+name+"\n"+
 //                "Employer: "+employer.getValue()+"\n"+

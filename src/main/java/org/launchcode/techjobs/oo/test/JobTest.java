@@ -29,14 +29,14 @@ public class JobTest {
         this.testJobB = new Job();
 
         this.testJobExpectedString = "\n"+
-                "ID: 1"+"\n"+
+                "ID: "+testJob.getId()+"\n"+
                 "Name: Product tester"+"\n"+
                 "Employer: ACME"+"\n"+
                 "Location: Desert"+"\n"+
                 "Position Type: Quality control"+"\n"+
                 "Core Competency: Persistence"+"\n";
         this.testJobAExpectedString = "\n"+
-                "ID: 2"+"\n"+
+                "ID: "+testJobA.getId()+"\n"+
                 "Name: Totally Real Job"+"\n"+
                 "Employer: Business"+"\n"+
                 "Location: Data not available"+"\n"+
@@ -70,7 +70,15 @@ public class JobTest {
         Assert.assertFalse(testJob4.equals(testJob5));
     }
     @Test
-    public void testToString() {
+    public void testToStringStartsAndEndsWithNewLine() {
+        String testString = testJob.toString();
+        char firstChar = testString.charAt(0);
+        char lastChar = testString.charAt(testString.length()-1);
+        Assert.assertEquals('\n',firstChar);
+        Assert.assertEquals('\n', lastChar);
+    }
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
         Assert.assertEquals(testJobExpectedString, testJob.toString());
     }
     @Test
