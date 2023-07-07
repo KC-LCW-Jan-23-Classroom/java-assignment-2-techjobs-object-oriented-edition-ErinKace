@@ -93,6 +93,7 @@ public class JobTest {
     @Test
     public void testToStringHandlesEmptyField() {
         Job testJobD = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job testJobF = new Job();
         String testJobDExpectedString = "\n"+
                 "ID: "+testJobD.getId()+"\n"+
                 "Name: Product tester"+"\n"+
@@ -101,6 +102,7 @@ public class JobTest {
                 "Position Type: Quality control"+"\n"+
                 "Core Competency: Persistence"+"\n";
         Assert.assertEquals(testJobDExpectedString, testJobD.toString());
+        Assert.assertEquals("OOPS! This job does not seem to exist.", testJobF.toString());
     }
 
 }

@@ -98,15 +98,19 @@ public class Job {
         String returnString = "\n"+
                 "ID: "+id+"\n";
 //        Field[] fields = Job.class.getDeclaredFields();
-        String[] fields = {name, employer.getValue(),location.getValue(),positionType.getValue(), coreCompetency.getValue()};
-        String[] fieldNames = {"Name: ","Employer: ","Location: ","Position Type: ","Core Competency: "};
-        for (int i=0; i<fieldNames.length; i++) {
-            returnString+=fieldNames[i];
-            if (fields[i].equals("") || fields[i].equals(null)) {
-                returnString+="Data not available\n";
-            } else {
-                returnString+=fields[i]+"\n";
+        try {
+            String[] fields = {name, employer.getValue(),location.getValue(),positionType.getValue(), coreCompetency.getValue()};
+            String[] fieldNames = {"Name: ","Employer: ","Location: ","Position Type: ","Core Competency: "};
+            for (int i = 0; i < fieldNames.length; i++) {
+                returnString += fieldNames[i];
+                if (fields[i].equals("") || fields[i].equals(null)) {
+                    returnString += "Data not available\n";
+                } else {
+                    returnString += fields[i] + "\n";
+                }
             }
+        } catch (NullPointerException e) {
+            return "OOPS! This job does not seem to exist.";
         }
 //        String returnString ="\n"+
 //                "ID: "+id+"\n"+
