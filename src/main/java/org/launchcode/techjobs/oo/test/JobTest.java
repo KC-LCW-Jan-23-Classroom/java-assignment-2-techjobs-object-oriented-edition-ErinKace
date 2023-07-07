@@ -71,20 +71,36 @@ public class JobTest {
     }
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
-        String testString = testJob.toString();
+        Job testJob6 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String testString = testJob6.toString();
         char firstChar = testString.charAt(0);
         char lastChar = testString.charAt(testString.length()-1);
-        Assert.assertEquals('\n',firstChar);
+        Assert.assertEquals('\n', firstChar);
         Assert.assertEquals('\n', lastChar);
     }
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
-        Assert.assertEquals(testJobExpectedString, testJob.toString());
+        Job testJobC = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String testJobCExpectedString = "\n"+
+                "ID: "+testJobC.getId()+"\n"+
+                "Name: Product tester"+"\n"+
+                "Employer: ACME"+"\n"+
+                "Location: Desert"+"\n"+
+                "Position Type: Quality control"+"\n"+
+                "Core Competency: Persistence"+"\n";
+        Assert.assertEquals(testJobCExpectedString, testJobC.toString());
     }
     @Test
     public void testToStringHandlesEmptyField() {
-        Assert.assertEquals(testJobAExpectedString, testJobA.toString());
+        Job testJobD = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String testJobDExpectedString = "\n"+
+                "ID: "+testJobD.getId()+"\n"+
+                "Name: Product tester"+"\n"+
+                "Employer: ACME"+"\n"+
+                "Location: Desert"+"\n"+
+                "Position Type: Quality control"+"\n"+
+                "Core Competency: Persistence"+"\n";
+        Assert.assertEquals(testJobDExpectedString, testJobD.toString());
     }
-
 
 }
